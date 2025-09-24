@@ -1,0 +1,1 @@
+module module_2::functino_sample2;
