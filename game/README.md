@@ -32,7 +32,7 @@
 ```
 * Arena
 ```
-
+0xeb5567b624e0cccb2a45a3aef09f2d6e3a773f4dfbc1d67957ee868694fdaf1f
 ```
 
 # Sui CLI 執行合約 Function 指令:
@@ -133,7 +133,7 @@ entry fun delist_role(
 }
 ```
 
-## Ex: PK
+##Ex: PK
 ```
 sui client call --package <Package Id> --module arena --function pk --args <Arena Object Id> <Config Object Id> <Attacker Role Object Id> <Defender Role Object Id> <Random Object Id> <Clock Object Id>
 ```
