@@ -84,7 +84,7 @@ public fun fill_shoes(
     if (self.shoes.is_none()){
         self.shoes.fill(new_shoes);
     }else{ // some
-        let shoes = self.chest.extract();
+        let shoes = self.shoes.extract();
         self.shoes.fill(new_shoes);
         transfer::public_transfer(shoes, ctx.sender());
     };
@@ -98,7 +98,7 @@ public fun fill_head(
     if (self.head.is_none()){
         self.head.fill(new_head);
     }else{ // some
-        let head = self.chest.extract();
+        let head = self.head.extract();
         self.head.fill(new_head);
         transfer::public_transfer(head, ctx.sender());
     };
