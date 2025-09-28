@@ -32,7 +32,7 @@
 ```
 * Arena
 ```
-0xeb5567b624e0cccb2a45a3aef09f2d6e3a773f4dfbc1d67957ee868694fdaf1f
+0x16f91e0229e9192b248eba45e83ed54a8aa1ba89c9a5613c43075b21ec52c0ed
 ```
 
 # Sui CLI 執行合約 Function 指令:
