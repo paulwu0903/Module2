@@ -11,6 +11,37 @@ module module_2::functino_sample1;
  * TODO: Example
 **/
 
+public fun add_public(
+    num1: u64,
+    num2: u64
+): u64{
+    add(num1, num2)
+}
+
+// package function
+public(package) fun add_package(
+    num1: u64,
+    num2: u64
+): u64{
+   add(num1, num2)
+}
+
+// entry function
+entry fun add_entry(
+    num1: u64,
+    num2: u64
+): u64{
+    add(num1, num2)
+}
+// private function
+fun add(
+    num1: u64,
+    num2: u64
+): u64{
+    num1 + num2
+}
+
+
 
 /*
  * Init Function: 部署合約會直接執行的 Function，只執行一次

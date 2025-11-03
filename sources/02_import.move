@@ -18,6 +18,22 @@
 
 module module_2::import;
 
+use std::string::{ Self, String };
+use std::ascii::{ Self, String as AsciiString };
+
+
+
+
+
+fun a(
+    s1: string::String,
+    s2: AsciiString,
+){
+   //string::append(s, r)
+}
+
+
+
+
+
 // === Imports ===
-
-

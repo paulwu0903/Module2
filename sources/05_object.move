@@ -1,5 +1,9 @@
 module module_2::sample_object;
 
+use std::string::{ String };
+use sui::object::{ UID };
+use sui::tx_context::{ TxContext };
+use sui::transfer::{ Self };
 
 /*
  * Struct是自定義的資料結構
@@ -29,8 +33,20 @@ module module_2::sample_object;
  * 
  * TODO: Example
 **/
+// Object
+public struct Student has key{
+    id: UID,
+    name: String,
+    no: u8,
+    score: Score,
+}
 
+public struct Score has store, drop{
+    math: u8,
+    eng: u8,
+}
 
+// u8, u64, u256, bool, address => store, copy, drop
 
 /* 
  * 實例化 Struct 
@@ -41,8 +57,50 @@ module module_2::sample_object;
  * }
  * TODO: Example
 **/
+public fun new_student(
+    std_name: String,
+    std_no: u8,
+    std_math: u8,
+    std_eng: u8,
+    ctx: &mut TxContext,
+){
+    let std_score = Score{
+        math: std_math,
+        eng: std_eng,
+    };
+    // object
+    let student = Student{
+        id: object::new(ctx),
+        name: std_name,
+        no: std_no,
+        score: std_score
+    };
 
+    // ownership
+    // owned object 
+    transfer::transfer(student, tx_context::sender(ctx));
+    // share object
+    // transfer::share_object(student);
+    // Immutable object
+    // transfer::freeze_object(student);
+}
 
+public fun set_math(
+    mut std: Student,
+    new_math: u8,
+    ctx: &mut TxContext
+){
+    std.score.math = new_math;
+    transfer::transfer(std, tx_context::sender(ctx));
+}
+
+// pass by value && pass by ref
+public fun set_math_v2(
+    std: &mut Student,
+    new_math: u8,
+){
+    std.score.math = new_math;
+}
 
 /*
  * Function input 有 Struct 類型
@@ -63,3 +121,23 @@ module module_2::sample_object;
  * TODO: Example
  * 
 **/
+
+public fun burn(
+    std: Student,
+){
+    let Student{
+        id: std_id,
+        name: _,
+        no: _,
+        score: std_score,
+    } = std;
+
+    object::delete(std_id);
+
+    let Score{
+        math:_,
+        eng:_,
+    } = std_score;
+}
+
+

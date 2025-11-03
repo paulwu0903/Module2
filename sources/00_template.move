@@ -7,6 +7,7 @@
  *                                 - Init Function: 部署合約時會直接執行的 Function (只會執行一次)
 **/
 
+
 /* 假設有一個 Package: hello , modules: a, b, c, d, 
  * a - functions: fna1, fna2, fna3
  * a - structs: A1, A2, A3
@@ -19,11 +20,12 @@
  *
  * 用 "::"當作往下定位的符號
  * Ex：
- * 1. C3: 
- * 2: fna3: 
- * 3. D2: 
+ * 1. C3: hello::c::C3
+ * 2: fna3: hello::a::fna3
+ * 3. D2: hello::d::D2
  * 4. a: hello::a
 **/
+
 module module_2::template;
 // === Imports ===
 

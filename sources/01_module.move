@@ -33,8 +33,7 @@ module module_2::my_module;
 // === Imports ===
 // std: 0x1
 // sui: 0x2
-use std::string::{Self, String};
-use std::debug;
+use std::string::{ Self, String };
 
 // === Constantss ===
 // const TOTAL_NUM: u64 = 0;
@@ -51,5 +50,6 @@ public fun print() {
         name: string::utf8(b"Paul"),
         age: 10,
     };
-    debug::print(&paul)
+    // debug::print(&paul)
 }
+
