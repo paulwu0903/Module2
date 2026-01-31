@@ -22,7 +22,7 @@
  * 1. C3: 
  * 2: fna3: 
  * 3. D2: 
- * 4. a: hello::a
+ * 4. a: 
 **/
 module module_2::template;
 // === Imports ===

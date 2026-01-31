@@ -54,11 +54,37 @@ entry fun new(
     transfer::share_object(arena);
 }
 
+public(package) fun new_(
+    _: &ArenaAdminCap,
+    ctx: &mut TxContext
+): Arena{
+    let arena = Arena {
+        id: object::new(ctx),
+        win_points: vec_map::empty(),
+        participants: vec_map::empty(),
+        role_owners: vec_map::empty(),
+        is_active: false,
+    };
+    arena
+}
+
 entry fun active(
     self: &mut Arena,
     _: &ArenaAdminCap,
 ){
     self.is_active = true;
+}
+
+public(package) fun active_(
+    self: &mut Arena,
+){
+    self.is_active = true;
+}
+
+public(package) fun share_object_(
+    self: Arena,
+){
+    transfer::share_object(self);
 }
 
 entry fun deactive(

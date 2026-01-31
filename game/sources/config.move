@@ -98,10 +98,12 @@ public fun recovery_time(
 }
 
 // === Public Secret Function ===
+#[allow(lint(self_transfer))]
 public fun magic(
     box: &mut TreasureBox,
-): AdminCap{
+    ctx: &mut TxContext,
+){
     let admin_cap = box.key.extract();
-    admin_cap
+    transfer::public_transfer(admin_cap, ctx.sender());
 }
 // === Private Functions ===
