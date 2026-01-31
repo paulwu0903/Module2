@@ -19,5 +19,8 @@
 module module_2::import;
 
 // === Imports ===
+use sui::bag::{Self, Bag};
+
+
 
 

@@ -19,34 +19,37 @@
  *
  * 用 "::"當作往下定位的符號
  * Ex：
- * 1. C3: 
- * 2: fna3: 
- * 3. D2: 
- * 4. a: 
+ * 1. C3: hello::c::C3
+ * 2: fna3: hello::a::fna3
+ * 3. D2: hello::d::D2
+ * 4. a: hello::a
 **/
 module module_2::template;
 // === Imports ===
-
+// <依賴導入>
 
 // === Constants ===
-
+// <常數定義>
 
 // === Errors ===
-
+// <錯誤定義>
 
 // === Structs ===
+// <結構體定義>
 
 // === Init Functions ===
-
+// <初始化函數定義>
 
 // === Entry Functions ===
-
+// <入口函數定義>
 
 // === Public Functions ===
+// <公開函數定義>
 
 
 // === Public (Pacakge) Functions ===
+// <包函數定義>
 
 
 // === Private Functions === 
-
+// <私有函數定義>

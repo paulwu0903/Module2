@@ -30,6 +30,91 @@ module module_2::sample_object;
  * TODO: Example
 **/
 
+use std::string::String;
+use sui::object::UID;
+use sui::transfer::{Self};
+
+// key, store, copy, drop
+// key -> object 
+
+// store, copy, drop
+
+
+public struct Student has key, store {
+    id: UID,
+    name: String,
+    score: Score
+}
+
+public struct Score has store{
+    math: u8,
+    eng: u8,
+}
+
+
+public fun new(
+    name: String,
+    math: u8,
+    eng: u8,
+    ctx: &mut TxContext,
+){
+    let score = Score{
+        math, // math : math
+        eng, // eng: eng
+    };
+    let student = Student{
+        id: object::new(ctx),
+        name,
+        score: score
+    };
+
+    transfer::public_transfer(student, tx_context::sender(ctx));   
+}
+
+public fun test(
+    num1: u8,
+){
+    let test1 = num1;
+}
+
+public fun handle_student(
+    student: Student, // key  -> object
+    receiver: address,
+){
+
+    // assign ownership
+    // transfer::public_transfer(student, receiver);
+    // transfer::public_share_object(student);
+    // transfer::public_freeze_object(student);
+    // burn object
+    let Student{
+        id: std_id, // UID
+        name: std_name, // String,
+        score: std_score, // Score: store
+    } = student;
+
+    let Score{
+        math: math_score,
+        eng: eng_score,
+    } = std_score;
+
+    object::delete(std_id);
+}
+
+public fun set_math(
+    student: &mut Student,
+    math: u8,
+){
+    student.score.math = math;
+}
+
+// public fun test(
+//     score: Score,
+// ){
+//     let test1 = score;
+// }
+
+
 
 
 /* 

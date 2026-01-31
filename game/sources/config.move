@@ -58,6 +58,14 @@ public fun set_init_hp(
     self: &mut Config,
     new_init_hp: u64
 ){
+    abort 0
+}
+
+public fun set_init_hp_v2(
+    _: &mut AdminCap,
+    self: &mut Config,
+    new_init_hp: u64
+){
     assert!(new_init_hp <= MAX_HP_INIT, EOverMaxValue );
     self.init_hp = new_init_hp;
 }

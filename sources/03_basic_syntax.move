@@ -5,6 +5,9 @@ module module_2::syntax;
 
 // === Constants ===
 
+// === Errors ===
+const ENumTooLarge: u64 = 0;
+
 //test function
 #[test]
 public fun demo_variables_and_constants(){
@@ -22,6 +25,15 @@ public fun demo_variables_and_constants(){
     * TODO: Example 
     **/
 
+    //usigned integer
+    let num1: u64 = 1; // u64: 0 ~ 2**64-1, u8, u16,u32, u64, u128,u256
+    let num2: u8 = 2;
+    let num3 = 3u32;
+    let sum = num1 + (num2 as u64);
+    // boolean
+    let isOk: bool = true; // false
+    // address
+    let paul_address: address = @0x11111111;
 
     /*
     * 條件式：
@@ -34,6 +46,23 @@ public fun demo_variables_and_constants(){
     *   };
     * TODO: Example
     **/
+
+    let k = 0;
+    if (num1 == 1){
+        k = (num1 as u8)+ 1;
+    }else if (num2 == 3){
+        k = (num2 as u64) * 2;
+    }else{
+        k = 1;
+    };
+
+    let k = if (num1 == 1){
+        (num1 as u8)+ 1
+    }else if (num2 == 3){
+        (num2 as u64) * 2
+    }else{
+        1
+    };
 
     /*
     * 迴圈：
@@ -48,6 +77,20 @@ public fun demo_variables_and_constants(){
     * TODO: Example
     **/
 
+
+    let i :u64 = 0;
+    while(i < 10 ){
+        i = i + 1;
+        if (i == 9 ) break;
+        if (i == 5 ) continue;
+    };
+
+    loop{
+        i = i + 1;
+        if (i == 9 ) break;
+        if (i == 5 ) continue;
+    };
+
     
     /*
     * Abort & Assert：
@@ -60,4 +103,13 @@ public fun demo_variables_and_constants(){
     **/ 
 
     
+    // abort
+    if (num1 == 10 ) {
+        abort ENumTooLarge // u64
+    };
+
+    // assert!
+    assert!(num1 != 10, ENumTooLarge);
+
+
 }
